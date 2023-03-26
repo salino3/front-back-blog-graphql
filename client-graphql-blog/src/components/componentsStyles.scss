@@ -1,0 +1,18 @@
+@import '../index.scss';
+
+.PNF {
+    margin: 5em;
+    display: grid;
+    justify-content: center;
+    
+    a {
+        color: rgb(69, 205, 228);
+        margin: 0 auto;
+        margin-bottom: 5em;
+    }
+
+    h1 {
+       color: $thirdColor;
+       margin: 1.5em;
+    }
+}
