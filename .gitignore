@@ -1,4 +1,4 @@
-/client-graphql-blog/node-modules
+/client-graphql-blog/node_modules
 
-/server-graphql-blog/node-modules
+/server-graphql-blog/node_modules
 /server-graphql-blog/.env
