@@ -10,6 +10,10 @@ import "./pagesStyles.scss";
 export const Home: React.FC = () => {
   const { data, error, refetch, loading } = useQuery(ALL_POSTS);
 
+    const imgDefault: string =
+      "https://tse4.mm.bing.net/th?id=OIP.F24Hpc1CvAdlBi0W7qJMSAAAAA&pid=Api&P=0";
+
+
   const [show, setShow] = React.useState<boolean[]>(
     new Array(data?.length).fill(false)
   );
@@ -51,7 +55,16 @@ export const Home: React.FC = () => {
                 <small className="border px-1  rounded text-warning float-end smallPhoto">
                   author:{" "}
                   <span className="text-white">{post?.author?.nickname}</span>
-                  <img className="mx-1" width={'30'} src={`${post?.author?.img}`} alt="img" />
+                  <img
+                    className="mx-1"
+                    width={"30"}
+                    onError={(e: React.SyntheticEvent<HTMLImageElement>) => {
+                      e.currentTarget.onerror = null; // para evitar bucles infinitos en caso de que la imagen predeterminada tampoco se cargue correctamente
+                      e.currentTarget.src = imgDefault;
+                    }}
+                    src={`${post?.author?.img}`}
+                    alt="logo"
+                  />
                 </small>
               </p>
               <div>{post.body}</div>
@@ -66,7 +79,7 @@ export const Home: React.FC = () => {
               >
                 <b>show comments</b>
               </button>
-              <div >
+              <div>
                 {!post || !post.comments || post.comments.length === 0 ? (
                   <div className="text-info border rounded   px-1">
                     No comments yet
