@@ -18,17 +18,18 @@ const register = {
     email: { type: GS },
     password: { type: GS },
     nickname: { type: GS },
+    img: { type: GS },
   },
   async resolve(_, args) {
     // agrs , como req.body
-    const { username, email, password, nickname } = args;
-    const newUser = new User({ username, email, password, nickname });
+    const { username, email, password, nickname, img } = args;
+    const newUser = new User({ username, email, password, nickname, img });
 
     await newUser.save();
 
     const _id = newUser._id;
     const { password: password2, ...others } = args;
-    const others2 = {...others, _id}
+    const others2 = { ...others, _id };
     const token = createJWTToken(others2);
 
     return token;
@@ -55,6 +56,7 @@ const login = {
       username: user.username,
       email: user.email,
       nickname: user.nickname,
+      img: user.img
     });
     return token;
   }, 
@@ -68,13 +70,13 @@ const updateUser = {
     username: { type: GS },
     email: { type: GS },
     password: { type: GS },
-    nickname: { type: GS },
+    img: { type: GS },
   },
   description: "Update the user info",
   async resolve(_, args, { verifiedUser }) {
     if (!verifiedUser) throw new Error("Unauthorized!");
 
-    const { username, email, password, nickname } = args;
+    const { username, email, password, nickname, img } = args;
 
     const user = await User.findOne({
       _id: verifiedUser._id,
@@ -82,20 +84,20 @@ const updateUser = {
 
     if (!user) {
       throw new Error("User doesn't exist!");
-    };
+    }
 
     const update = {
       email: email || user.email,
       password: password || user.password,
       nickname: nickname || user.nickname,
       username: username || user.username,
+      img: img || user.img,
     };
 
-      const existingUser = await User.findOne({ email: email });
-      if (existingUser && existingUser.id !== verifiedUser._id) {
-        throw new Error("Email address is already in use");
-      };
-
+    const existingUser = await User.findOne({ email: email });
+    if (existingUser && existingUser.id !== verifiedUser._id) {
+      throw new Error("Email address is already in use");
+    }
 
     const updatedUser = await User.findOneAndUpdate(
       { _id: verifiedUser._id },

@@ -13,6 +13,7 @@ export const ALL_POSTS = gql`
       email 
       username
       nickname
+      img
         
     }
     comments {
@@ -22,6 +23,7 @@ export const ALL_POSTS = gql`
         email 
         username
         nickname
+        img
         
       }
     }

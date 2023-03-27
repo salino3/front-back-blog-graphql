@@ -8,6 +8,7 @@ export const GET_ALL_INFO = gql`
       username
       email
       nickname
+      img
       posts {
         id
         title
@@ -17,6 +18,7 @@ export const GET_ALL_INFO = gql`
           username
           email
           nickname
+          img
           posts {
             id
             title
@@ -24,6 +26,7 @@ export const GET_ALL_INFO = gql`
             author {
               id
               email
+              img
             }
             comments {
               id
@@ -59,6 +62,8 @@ export const GET_ONE_USER = gql`
     user(id: $id) {
       username
       nickname
+      email
+      img
       comments {
         id
         comment
@@ -67,6 +72,7 @@ export const GET_ONE_USER = gql`
           username
           email
           nickname
+          img
         }
         post {
           id
@@ -77,6 +83,7 @@ export const GET_ONE_USER = gql`
             username
             email
             nickname
+            img
           }
         }
       }

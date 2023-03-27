@@ -11,11 +11,12 @@ const UserType = new GraphQLObjectType({
     nickname: { type: GS },
     createdAt: { type: GS },
     updatedAt: { type: GS },
+    img: { type: GS },
     //
     posts: {
-      type:  new GraphQLList(PostType),
+      type: new GraphQLList(PostType),
       async resolve(parent, args) {
-        const post = await Post.find({authorId: parent.id});
+        const post = await Post.find({ authorId: parent.id });
         return post;
       },
     },

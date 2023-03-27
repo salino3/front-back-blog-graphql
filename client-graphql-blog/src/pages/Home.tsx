@@ -48,9 +48,10 @@ export const Home: React.FC = () => {
               <p className="border-bottom  border-danger p-1">
                 <span className="border rounded border-info px-1">post</span>{" "}
                 {post?.title}{" "}
-                <small className="border px-1 rounded text-warning float-end">
+                <small className="border px-1  rounded text-warning float-end smallPhoto">
                   author:{" "}
                   <span className="text-white">{post?.author?.nickname}</span>
+                  <img className="mx-1" width={'30'} src={`${post?.author?.img}`} alt="img" />
                 </small>
               </p>
               <div>{post.body}</div>
@@ -65,7 +66,7 @@ export const Home: React.FC = () => {
               >
                 <b>show comments</b>
               </button>
-              <div className="">
+              <div >
                 {!post || !post.comments || post.comments.length === 0 ? (
                   <div className="text-info border rounded   px-1">
                     No comments yet

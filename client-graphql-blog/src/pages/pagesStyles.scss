@@ -2,6 +2,11 @@
 
    min-width: 100%;
 
+    .smallPhoto {
+      position: relative;
+      bottom: 0.5em;
+    }
+
    .input1{
     height: 1em;
 
@@ -15,4 +20,5 @@
     background: rgb(194, 194, 51);
 
    }
+
 }
