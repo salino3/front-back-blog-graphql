@@ -8,13 +8,21 @@
     }
 
    .input1{
-    height: 1em;
+    height: 1.1em;
+
+   }
+ 
+   .btninput{
+    position: relative;
+        font-size: xx-small;
+    bottom: 0.5em;
 
    }
 
    .btn1{
     float: right;
     position: relative;
+    top: 0.5em;
     font-size: x-small;
     color: white;
     background: rgb(194, 194, 51);

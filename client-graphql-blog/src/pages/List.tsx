@@ -1,7 +1,7 @@
 import { useQuery } from '@apollo/client';
 import React from 'react';
 import { GET_ALL_INFO } from "../Graphql";
-import { User } from '../Graphql/interfeces';
+import { User } from '../Graphql/interfaces';
 
 export const List: React.FC = () => {
 

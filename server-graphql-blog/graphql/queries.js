@@ -39,6 +39,7 @@ const posts = {
   description: "Get all posts",
    resolve: async () => {
      const posts = await Post.find()
+     
      return posts
   }
 };

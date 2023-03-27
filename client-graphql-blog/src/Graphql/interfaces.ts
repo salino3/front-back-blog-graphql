@@ -18,6 +18,7 @@ export interface Comment {
 };
 
 export interface Post {
+  posts: Post[];
   id?: string | number;
   title?: string;
   body?: string;
@@ -25,6 +26,7 @@ export interface Post {
   updatedAt?: string;
   author?: User;
   comments?: Comment[];
+  length?: number;
 }
 
 

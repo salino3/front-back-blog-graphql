@@ -1,7 +1,7 @@
 import React from "react";
 import { useMutation } from "@apollo/client";
 import { CREATE_USER } from "../Graphql";
-import { User } from "../Graphql/interfeces";
+import { User } from "../Graphql/interfaces";
 import { useNavigate } from "react-router-dom";
 
 export const Register: React.FC = () => {
