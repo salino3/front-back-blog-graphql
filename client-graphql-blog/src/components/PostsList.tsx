@@ -31,8 +31,7 @@ export const PostsList: React.FC<Props> = (props) => {
                 author:{" "}
                 <span className="text-white">{post?.author?.nickname}</span>
                 <img
-                  className="mx-1"
-                  width={"30"}
+                  className="mx-1 imgProfile"
                   onError={(e: React.SyntheticEvent<HTMLImageElement>) => {
                     e.currentTarget.onerror = null; // para evitar bucles infinitos en caso de que la imagen predeterminada tampoco se cargue correctamente
                     e.currentTarget.src = imgDefault;

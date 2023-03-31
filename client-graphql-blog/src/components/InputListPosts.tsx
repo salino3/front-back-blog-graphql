@@ -1,32 +1,42 @@
-import { useMutation } from '@apollo/client';
-import React from 'react';
-import { CREATE_COMMENT } from '../Graphql';
-import { Post } from '../Graphql/interfaces';
+import { useMutation } from "@apollo/client";
+import React from "react";
+import { CREATE_COMMENT } from "../Graphql";
+import { Post } from "../Graphql/interfaces";
 
 interface Props {
   handleShow: (index: number) => void;
   index: number;
   post: Post;
-};
+}
 
 export const InputListPosts: React.FC<Props> = (props) => {
-    const {handleShow, post, index} = props;
+  const { handleShow, post, index } = props;
 
-   const [addComment, { error }] =  useMutation(CREATE_COMMENT);
+  const [addComment, { error }] = useMutation(CREATE_COMMENT);
 
-   const [textComment, setTextComment] = React.useState("");
+  const [textComment, setTextComment] = React.useState("");
 
-const handleClick = (): void => {
-  if(post.id && textComment){
-console.log({
-  id: post.id,
-  textComment
-  });
- };
-};
-
-console.log("InputListPosts post", post)
-
+  const handleClick = (): void => {
+    if (post.id && textComment) {
+      const token = sessionStorage.getItem("token");
+      addComment({
+        variables: { postId: post.id, comment: textComment },
+        context: {
+          headers: {
+            auth: token ? `Bearer ${token}` : "",
+          },
+        },
+      })
+        .then((result) => {
+          console.log("oh result", result);
+        })
+        .catch((error) => {
+          console.log(error);
+          alert("Something went wrong..");
+        });
+    }
+    setTextComment("");
+  };
 
   return (
     <>
@@ -34,9 +44,14 @@ console.log("InputListPosts post", post)
         type="text"
         className="input1 rounded"
         placeholder="text a comment.."
+        value={textComment}
         onChange={(event) => setTextComment(event.target.value)}
-        />
-      <button onClick={() => handleClick()} className="btn  btn-outline-primary mx-2 btninput">
+      />
+      <button
+        onClick={() => handleClick()}
+        type="submit"
+        className="btn  btn-outline-primary mx-2 btninput"
+      >
         <b>send</b>
       </button>
       <button
@@ -48,4 +63,4 @@ console.log("InputListPosts post", post)
       </button>
     </>
   );
-}
+};

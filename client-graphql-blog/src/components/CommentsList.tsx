@@ -10,7 +10,6 @@ interface Props {
 export const CommentsList: React.FC<Props> = React.memo((props) => {
  const {post, show, index} = props;
 
- console.log("CommentList")
 
   return (
     <>
