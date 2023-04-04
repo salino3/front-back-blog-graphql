@@ -5,6 +5,7 @@ interface Routes {
     register: string;
     login: string;
     privates: string;
+    myprofile: string;
 }
 
 
@@ -15,6 +16,7 @@ const SwitchRouter: Routes = {
   register: "/register",
   login: "/login",
   privates: "/privates",
+  myprofile: "/privates/myprofile",
 };
 
-export const {root, list, pnf, register, login, privates} = SwitchRouter;
+export const { root, list, pnf, register, login, privates, myprofile } = SwitchRouter;

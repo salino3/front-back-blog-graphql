@@ -7,7 +7,7 @@ export const Private: React.FC = () => {
 
     const { LogoutUser } = React.useContext<MyState>(GlobalData);
 
-    let user: string | null = sessionStorage.getItem("user");
+    const user: string | null = sessionStorage.getItem("user");
     const [currentUser, setCurrentUser] = React.useState<User | null>( user ? JSON.parse(user) : null)
 
  console.log("current", currentUser);

@@ -2,8 +2,18 @@ $firstColor: rgb(183, 33, 183);
 $secondColor: rgb(45, 151, 200);
 $thirdColor: rgb(81, 255, 81);
 
+
+
 body {
   background-color: black;
   color: white;
   padding: 0.3em;
+
+  ul, li {
+  margin: 0;
+  padding: 0;
+  list-style: none; 
+ }
+ 
+
 }

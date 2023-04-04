@@ -1,7 +1,7 @@
 import React from "react";
 import { Routes, Route } from "react-router-dom";
 import { Home, List, Login, Private, Register } from "../pages";
-import { list, root, pnf, login, register, privates } from ".";
+import { list, root, pnf, login, register, privates, myprofile } from ".";
 import { PageNotFound } from "../components";
 import { PrivateRoutes, PublicRoutes } from "./path-routes";
 
@@ -17,7 +17,10 @@ export const AppRouter: React.FC = () => {
       </Route>
       {/*  */}
       <Route path={privates} element={<PrivateRoutes />}>
-        <Route path={privates} element={<Private />} />
+        <Route path={privates} element={<Home />} />
+        <Route path={myprofile} element={<Private />} />
+        <Route path={privates + list} element={<List />} />
+        <Route path={privates + pnf} element={<PageNotFound />} />
       </Route>
     </Routes>
   );
