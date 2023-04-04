@@ -12,6 +12,11 @@ const users = {
   async resolve() {
 
     const users = await User.find();
+
+    if(!users){
+      throw new Error();
+    };
+
     return users;
   },
 };
@@ -28,6 +33,7 @@ const user = {
      const user = await User.findById(id);
      
      if(!user) throw new Error("User not found");
+
      return user;
   }
 };
@@ -39,6 +45,10 @@ const posts = {
   description: "Get all posts",
    resolve: async () => {
      const posts = await Post.find()
+
+      if (!posts) {
+        throw new Error();
+      };
      
      return posts
   }
@@ -68,6 +78,11 @@ const comments = {
   description: "Get all comments",
   resolve: async () => {
     const comments = await Comment.find();
+
+ if (!comments) {
+   throw new Error();
+ };
+
     return comments;
   },
 }; 
@@ -81,6 +96,9 @@ const comment = {
   },
   async resolve(_, args) {
     const comment = await Comment.findById(args.id);
+
+      if (!comment) throw new Error("Comment not found");
+
      return comment;
   }
 }
