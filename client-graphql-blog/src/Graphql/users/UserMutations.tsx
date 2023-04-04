@@ -29,3 +29,13 @@ export const LOGIN_USER = gql`
     password: $password,
   )
  }`;
+
+ export const LOGGED = gql`
+  mutation logged (
+    $email: String!,
+  ) {
+    logged (
+       email: $email,
+    )
+  }
+ `;

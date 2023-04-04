@@ -1,6 +1,7 @@
 const {
   GraphQLString: GS,
   GraphQLID: GID,
+  GraphQLBoolean: GB
 } = require("graphql");
 const {User, Post, Comment} = require('../models');
 const {createJWTToken} = require('../util/auth');
@@ -131,7 +132,6 @@ const deleteUser = {
     
   }
 }
-
 
 const createPost = {
   name: "Posting",
@@ -281,6 +281,10 @@ const deleteComment = {
 };
 
 
+
+
+
+
 module.exports = {
   register,
   login,
@@ -294,7 +298,7 @@ module.exports = {
   addComment,
   updateComment,
   deleteComment,
-};
+  };
 
 
 

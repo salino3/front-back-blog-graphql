@@ -1,8 +1,14 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import './componentsStyles.scss';
+// import jwt from "jsonwebtoken-browser";
+
+
+
+
 
 export const PageNotFound: React.FC = () => {
+ 
 
   return (
     <div className='PNF'>
@@ -13,3 +19,5 @@ export const PageNotFound: React.FC = () => {
     </div>
  );
 }
+
+

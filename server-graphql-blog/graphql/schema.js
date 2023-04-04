@@ -1,5 +1,12 @@
 const {GraphQLSchema, GraphQLObjectType, GraphQLString} = require('graphql');
-const { users, user, posts, post, comments, comment } = require("./queries");
+const {
+  users,
+  user,
+  posts,
+  post,
+  comments,
+  comment,
+} = require("./queries");
 const {
   register,
   login,
@@ -11,6 +18,7 @@ const {
   addComment,
   updateComment,
   deleteComment,
+  logged,
 } = require("./mutations");
 
 

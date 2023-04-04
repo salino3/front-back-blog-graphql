@@ -1,4 +1,4 @@
-const {GraphQLString: GS, GraphQLList, GraphQLID: GID} = require('graphql');
+const {GraphQLString: GS, GraphQLList, GraphQLID: GID, GraphQLBoolean: GB} = require('graphql');
 const { UserType, PostType, CommentType } = require('./typeDefs');
 const {User, Post, Comment} = require('../models');
 
@@ -84,6 +84,7 @@ const comment = {
      return comment;
   }
 }
+
 
 
 

@@ -2,9 +2,19 @@ import { useMutation } from '@apollo/client';
 import React from 'react';
 import { LOGIN_USER } from '../Graphql';
 import { User } from '../Graphql/interfaces';
+import jwt_decode from "jwt-decode";
+import { useAuth } from '../hooks/useAuth';
+import { MyState } from '../core/interface';
+import { GlobalData } from '../core/GlobalData';
+
+
 
 export const Login: React.FC = () => {
+
+  const { LoginUser } = React.useContext<MyState>(GlobalData);
   const [login,  {error} ] = useMutation(LOGIN_USER);
+
+  // const {setToken, auth} = useAuth();
 
   const [formData, setFormData] = React.useState<User>({
     email: "",
@@ -49,9 +59,13 @@ export const Login: React.FC = () => {
     console.log({ formData });
     login({ variables: { email: formData.email, password: formData.password } })
       .then((res) => {
-        const token = res.data.login;
-        // Guarda el token en sessionStorage
-        sessionStorage.setItem("token", token);
+        const decoded: any = jwt_decode(res.data.login);
+
+        sessionStorage.setItem("user", JSON.stringify(decoded.user));
+        LoginUser(res.data.login);
+
+        console.log( decoded)
+        
       })
       .catch((error) => console.log(error));
   };
@@ -65,6 +79,7 @@ export const Login: React.FC = () => {
      );
    }
   
+  //  console.log("a verrr", auth)
   return (
     <>
       <h1>Login</h1>

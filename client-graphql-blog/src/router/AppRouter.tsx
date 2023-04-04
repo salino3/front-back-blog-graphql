@@ -1,18 +1,24 @@
-import React from 'react'
+import React from "react";
 import { Routes, Route } from "react-router-dom";
-import { Home, List, Login, Register } from '../pages';
-import { list, root, pnf, login, register } from '.';
-import { PageNotFound } from '../components';
-
+import { Home, List, Login, Private, Register } from "../pages";
+import { list, root, pnf, login, register, privates } from ".";
+import { PageNotFound } from "../components";
+import { PrivateRoutes, PublicRoutes } from "./path-routes";
 
 export const AppRouter: React.FC = () => {
   return (
     <Routes>
-      <Route path={root} element={<Home />} />
-      <Route path={list} element={<List />} />
-      <Route path={pnf} element={<PageNotFound />} />
-      <Route path={login} element={<Login />} />
-      <Route path={register} element={<Register />} />
+      <Route path={root} element={<PublicRoutes />}>
+        <Route path={root} element={<Home />} />
+        <Route path={list} element={<List />} />
+        <Route path={pnf} element={<PageNotFound />} />
+        <Route path={login} element={<Login />} />
+        <Route path={register} element={<Register />} />
+      </Route>
+      {/*  */}
+      <Route path={privates} element={<PrivateRoutes />}>
+        <Route path={privates} element={<Private />} />
+      </Route>
     </Routes>
   );
-}
+};
