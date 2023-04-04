@@ -1,5 +1,5 @@
 import React from 'react'
-import { Post } from "../Graphql/interfaces";
+import { Post } from "../Graphql";
 import { CommentsList } from "./CommentsList";
 import { InputListPosts } from './InputListPosts';
 

@@ -1,0 +1,30 @@
+
+
+
+.divHeader{
+    .head1_home{
+        display: grid;
+         grid-template-columns: auto auto;
+         .homeB {
+            margin-right: 0.3em;
+         } 
+   }
+
+  nav ul{
+        display: grid;
+       grid-template-columns: auto auto;
+       gap: 0.5em;
+       margin-left: 0.5em;
+  }
+
+  .head3{
+      grid-template-rows: auto auto;
+
+      input {
+        margin-bottom: 0.2em;
+        margin-right: 0.2em;
+      }
+     
+  }
+
+}

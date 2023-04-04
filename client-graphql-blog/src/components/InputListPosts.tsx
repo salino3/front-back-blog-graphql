@@ -1,7 +1,6 @@
 import { useMutation } from "@apollo/client";
 import React from "react";
-import { CREATE_COMMENT } from "../Graphql";
-import { Post } from "../Graphql/interfaces";
+import { CREATE_COMMENT, Post } from "../Graphql";
 
 interface Props {
   handleShow: (index: number) => void;
@@ -44,6 +43,7 @@ export const InputListPosts: React.FC<Props> = (props) => {
         type="text"
         className="input1 rounded"
         placeholder="text a comment.."
+        required
         value={textComment}
         onChange={(event) => setTextComment(event.target.value)}
       />

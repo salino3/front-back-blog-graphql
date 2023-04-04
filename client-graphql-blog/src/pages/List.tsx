@@ -1,14 +1,18 @@
 import { useQuery } from '@apollo/client';
 import React from 'react';
-import { GET_ALL_INFO } from "../Graphql";
-import { User } from '../Graphql/interfaces';
+import { GET_ALL_INFO, User} from "../Graphql";
 
 export const List: React.FC = () => {
 
   const { data, error, refetch } = useQuery(GET_ALL_INFO);
 
-
-  console.log(data);
+if(error){
+  return (
+    <h1>
+      {error?.message}
+    </h1>
+  )
+};
 
   return (
     <>

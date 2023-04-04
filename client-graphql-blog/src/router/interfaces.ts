@@ -6,6 +6,8 @@ interface Routes {
     login: string;
     privates: string;
     myprofile: string;
+    updateuser: string;
+    deleteuser: string;
 }
 
 
@@ -17,6 +19,8 @@ const SwitchRouter: Routes = {
   login: "/login",
   privates: "/privates",
   myprofile: "/privates/myprofile",
+  updateuser: "/privates/updateuser",
+  deleteuser: "/privates/deleteuser",
 };
 
-export const { root, list, pnf, register, login, privates, myprofile } = SwitchRouter;
+export const { root, list, pnf, register, login, privates, myprofile, updateuser, deleteuser } = SwitchRouter;

@@ -1,12 +1,12 @@
 import './App.scss';
-import { HeaderLayout } from './layouts'
+import { Header } from './components';
 import { AppRouter } from './router'
 
 function App() {
 
   return (
     <>
-    <HeaderLayout />
+    <Header />
     <AppRouter />
     </>
   )

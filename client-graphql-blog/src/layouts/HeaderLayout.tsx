@@ -1,11 +1,15 @@
 import React from 'react';
-import { Header } from '../components/navbar/Header';
+import "./layoutStyles.scss";
 
-export const HeaderLayout: React.FC = () => {
+interface Props {
+  children: React.ReactNode;
+};
+
+export const HeaderLayout: React.FC<Props> = ({children}) => {
 
   return (
     <header className='divHeader rounded'>
-       <Header />
+       {children}
     </header>
   )
 }

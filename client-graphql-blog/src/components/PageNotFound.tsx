@@ -4,12 +4,8 @@ import './componentsStyles.scss';
 // import jwt from "jsonwebtoken-browser";
 
 
-
-
-
 export const PageNotFound: React.FC = () => {
  
-
   return (
     <div className='PNF'>
         <Link to={'/'}>Go Home</Link>

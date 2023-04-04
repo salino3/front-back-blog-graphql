@@ -1,8 +1,8 @@
-import React, { ReactNode } from 'react';
+import React from 'react';
 import './layoutStyles.scss';
 
 interface Props {
-  children: ReactNode;
+  children: React.ReactNode;
 };
 
 export const HomeLayout: React.FC<Props> = ({children}) => {

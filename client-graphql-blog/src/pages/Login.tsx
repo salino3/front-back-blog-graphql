@@ -1,11 +1,8 @@
-import { useMutation } from '@apollo/client';
 import React from 'react';
-import { LOGIN_USER } from '../Graphql';
-import { User } from '../Graphql/interfaces';
+import { useMutation } from '@apollo/client';
 import jwt_decode from "jwt-decode";
-import { useAuth } from '../hooks/useAuth';
-import { MyState } from '../core/interface';
-import { GlobalData } from '../core/GlobalData';
+import { LOGIN_USER, User,  } from "../Graphql";
+import { GlobalData, MyState } from "../core";
 
 
 
@@ -14,7 +11,6 @@ export const Login: React.FC = () => {
   const { LoginUser } = React.useContext<MyState>(GlobalData);
   const [login,  {error} ] = useMutation(LOGIN_USER);
 
-  // const {setToken, auth} = useAuth();
 
   const [formData, setFormData] = React.useState<User>({
     email: "",
@@ -38,8 +34,7 @@ export const Login: React.FC = () => {
           [field]:
             field === "email" ? String(fieldValue).toLowerCase() : fieldValue,
         });
-        console.log(formData);
-      }
+      };
     };
 
   React.useEffect(() => {
@@ -72,14 +67,13 @@ export const Login: React.FC = () => {
 
   if (error?.message?.includes("User not found")) {
     return <h1 className="text-center mt-5 text-danger">* User not found *</h1>;
-  }
+  };
    if (error?.message?.includes("Invalid credentials")) {
      return (
        <h1 className="text-center mt-5 text-danger">* Invalid credentials *</h1>
      );
-   }
+   };
   
-  //  console.log("a verrr", auth)
   return (
     <>
       <h1>Login</h1>

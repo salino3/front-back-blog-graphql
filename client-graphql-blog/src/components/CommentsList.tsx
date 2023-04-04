@@ -1,5 +1,5 @@
 import React from 'react';
-import { Comment, Post } from '../Graphql/interfaces';
+import { Comment, Post } from '../Graphql';
 
 interface Props {
   post: Post;

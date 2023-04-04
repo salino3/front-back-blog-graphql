@@ -1,6 +1,7 @@
-import React from 'react'
+import React from 'react';
 import { GlobalData } from './GlobalData';
 import jwt_decode from "jwt-decode";
+import { User } from '../Graphql';
 
 interface Props {
     children: JSX.Element | JSX.Element[]
@@ -26,8 +27,18 @@ export const MyProvider: React.FC<Props> = ({children}) => {
     setIsAuthenticated(false);
   }, []);
 
+  //* currentUser
+      const user: string | null = sessionStorage.getItem("user");
+      const [currentUser, setCurrentUser] = React.useState<User | null>(
+        user ? JSON.parse(user) : null
+      );
+
+    React.useEffect(() => {
+      setCurrentUser(user ? JSON.parse(user) : null);
+    }, [user]);
+
   return (
-    <GlobalData.Provider value={{ isAuthenticated, LoginUser, LogoutUser }}>
+    <GlobalData.Provider value={{ isAuthenticated, LoginUser, LogoutUser, currentUser }}>
       {children}
     </GlobalData.Provider>
   );
