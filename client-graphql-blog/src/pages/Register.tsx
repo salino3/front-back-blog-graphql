@@ -3,16 +3,17 @@ import { useMutation } from "@apollo/client";
 import { CREATE_USER } from "../Graphql";
 import { User } from "../Graphql/interfaces";
 import { useNavigate } from "react-router-dom";
+import { FormLayout } from "../layouts";
 
 export const Register: React.FC = () => {
+  const [register, { error }] = useMutation(CREATE_USER);
 
-    const [register, { error }] = useMutation(CREATE_USER);
- 
-    const navigate = useNavigate();
+  const navigate = useNavigate();
 
-    const imgDefault: string = "https://tse4.mm.bing.net/th?id=OIP.F24Hpc1CvAdlBi0W7qJMSAAAAA&pid=Api&P=0";
-  
-    const [formData, setFormData] = React.useState<User>({
+  const imgDefault: string =
+    "https://tse4.mm.bing.net/th?id=OIP.F24Hpc1CvAdlBi0W7qJMSAAAAA&pid=Api&P=0";
+
+  const [formData, setFormData] = React.useState<User>({
     username: "",
     email: "",
     password: "",
@@ -23,29 +24,24 @@ export const Register: React.FC = () => {
   const [terms, setTerms] = React.useState<boolean>(false);
   const [isFormDataValid, setIsFormDataValid] = React.useState<boolean>(false);
 
-  const handleChange =
-    (field: keyof User | string) =>
-    (
-      event: any
-    ) => {
-      const { checked, value } = event.target;
-      let fieldValue = field === "terms" ? checked : value;
-      if (field === "terms") {
-        setTerms(checked);
-      } else {
-        // setFormData({ ...formData, [field]: fieldValue  });
-        setFormData({
-          ...formData,
-          [field]:
-            field === "email"
-              ? String(fieldValue).toLowerCase()
-              : field === "img" && !fieldValue
-              ? imgDefault
-              : fieldValue,
-        });
-        console.log(formData);
-      }
-    };
+  const handleChange = (field: keyof User | string) => (event: any) => {
+    const { checked, value } = event.target;
+    let fieldValue = field === "terms" ? checked : value;
+    if (field === "terms") {
+      setTerms(checked);
+    } else {
+      // setFormData({ ...formData, [field]: fieldValue  });
+      setFormData({
+        ...formData,
+        [field]:
+          field === "email"
+            ? String(fieldValue).toLowerCase()
+            : field === "img" && !fieldValue
+            ? imgDefault
+            : fieldValue,
+      });
+    }
+  };
 
   React.useEffect(() => {
     const formDataValues = Object.values(formData);
@@ -61,39 +57,41 @@ export const Register: React.FC = () => {
   ) => {
     event.preventDefault();
 
-      if (!formData.img) {
-        setFormData({
-          ...formData,
-          img: imgDefault,
-        });
-      }
+    if (!formData.img) {
+      setFormData({
+        ...formData,
+        img: imgDefault,
+      });
+    }
 
-    console.log({ formData });
-
-register({
-  variables: {
-    username: formData.username,
-    email: formData.email,
-    password: formData.password,
-    nickname: formData.nickname,
-    img: formData.img || imgDefault,
-  },
-})
-  .then((res) => {
-    console.log(res)
-  navigate('/')
-  })
-  .catch((error) => {
-    console.log(error);
-  });
-  
-
+    register({
+      variables: {
+        username: formData.username,
+        email: formData.email,
+        password: formData.password,
+        nickname: formData.nickname,
+        img: formData.img || imgDefault,
+      },
+    })
+      .then((res) => {
+        console.log(res);
+        navigate("/");
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   };
 
+  if (error) {
+    return (
+      <h1 className="text-center mt-5 text-danger">* {error.message} *</h1>
+    );
+  }
+
   return (
-    <>
-      <h1>Register</h1>
+    <FormLayout>
       <form onSubmit={handleSubmit}>
+        <h1>Register</h1>
         <label htmlFor="username">Username: </label> <br />
         <input
           type="text"
@@ -137,12 +135,12 @@ register({
         <textarea
           id="img"
           onChange={handleChange("img")}
-
-          style={{ width: "400px", height: "100px" }}
           placeholder="Your image .."
         ></textarea>
         <br /> <br />
-        <label htmlFor="terms">Agree to Terms and Conditions</label>
+        <label htmlFor="terms" className="m-2 mt-0">
+          Agree to Terms and Conditions
+        </label>
         <input
           type="checkbox"
           onChange={handleChange("terms")}
@@ -150,10 +148,15 @@ register({
           required
         />{" "}
         <br />
-        <button id="miBoton" disabled={isFormDataValid} type="submit">
-          Submit
+        <button
+          className="btn btn-sm btn-primary rounded"
+          id="miBoton"
+          disabled={isFormDataValid}
+          type="submit"
+        >
+          <b>Submit</b>
         </button>
       </form>
-    </>
+    </FormLayout>
   );
 };

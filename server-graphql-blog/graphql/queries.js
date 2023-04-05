@@ -10,7 +10,6 @@ const users = {
   type: new GraphQLList(UserType),
   description: "Returns a list of users and all info",
   async resolve() {
-
     const users = await User.find();
 
     if(!users){
@@ -33,6 +32,7 @@ const user = {
      const user = await User.findById(id);
      
      if(!user) throw new Error("User not found");
+
 
      return user;
   }

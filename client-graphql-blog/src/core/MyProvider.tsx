@@ -37,6 +37,9 @@ export const MyProvider: React.FC<Props> = ({children}) => {
       setCurrentUser(user ? JSON.parse(user) : null);
     }, [user]);
 
+    console.log(currentUser);
+
+
   return (
     <GlobalData.Provider value={{ isAuthenticated, LoginUser, LogoutUser, currentUser }}>
       {children}
