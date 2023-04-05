@@ -30,12 +30,35 @@ export const LOGIN_USER = gql`
   )
  }`;
 
- export const LOGGED = gql`
-  mutation logged (
-    $email: String!,
-  ) {
-    logged (
-       email: $email,
-    )
-  }
- `;
+ export const UPDATE_USER = gql`
+   mutation updateUser(
+    $username: String!
+    $email: String!
+    $nickname: String!
+    $password: String!
+    $img: String!
+    ) {
+     updateUser(
+    username: $username
+    email: $email
+    nickname: $nickname
+    password: $password
+    img: $img
+      )
+   }`;
+
+
+export const DELETE_USER = gql`
+ mutation deleteUser(
+  $id: ID!
+  $email: String!
+  $password: String!
+ ) {
+  deleteUser (
+    id: $id
+    email: $email
+    password: $password
+  )
+ }`;
+
+

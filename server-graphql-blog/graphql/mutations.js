@@ -117,16 +117,23 @@ const deleteUser = {
   description: "Deleting a user",
   args: {
     id: {type: GID },
+    email: {type: GS},
+    password: {type: GS}
   },
   async resolve(_, args, {verifiedUser}) {
    
-    const {id} = args;
+    const {id, email, password} = args;
+
     if (!verifiedUser || id !== verifiedUser._id) throw new Error("Unauthorized!");
 
-    const userExist = await User.findById(id);
+    const userExist = await User.findById(id).select("+password");
     if(!userExist) throw new Error("There is no user with this id");
-   
-     await User.findByIdAndDelete(id);
+
+    if (userExist.email !== email || userExist.password !== password) {
+      throw new Error("No corrects Credentials");
+    };
+
+    await User.findByIdAndDelete(id);
 
     return `User ${id} deleted`;
     

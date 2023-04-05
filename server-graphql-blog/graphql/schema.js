@@ -18,7 +18,6 @@ const {
   addComment,
   updateComment,
   deleteComment,
-  logged,
 } = require("./mutations");
 
 
