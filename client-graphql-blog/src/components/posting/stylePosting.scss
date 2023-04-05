@@ -1,0 +1,29 @@
+@import './../../index.scss';
+
+#formPosting {
+    display: grid;
+    grid-template-rows: auto auto;
+    margin-bottom: 1em;
+    border: solid 2px $firstColor;
+    padding: 0.5em;
+    border-radius: 10px;
+    color: $fourthColor;
+
+  
+
+    .div1 {
+        display: grid;
+        grid-template-columns: auto auto;
+        gap: 1em;
+        input {  
+          height: 1.3em;
+          border-radius: 15px;
+          padding-left: 0.3em;
+        }    
+
+        .btnPosting{
+        font-size: x-small;
+        }
+    }
+
+}
