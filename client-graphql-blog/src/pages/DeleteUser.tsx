@@ -1,7 +1,8 @@
 import React from 'react';
+import { FormLayout } from '../layouts';
 
 export const DeleteUser: React.FC = () => {
   return (
-    <div> DeleteUser</div>
+    <FormLayout> DeleteUser</FormLayout>
   )
 }

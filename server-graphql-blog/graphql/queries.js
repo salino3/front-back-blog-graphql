@@ -4,7 +4,6 @@ const {User, Post, Comment} = require('../models');
 
 
 
-
 const users = {
   name: "Get users and all info",
   type: new GraphQLList(UserType),
