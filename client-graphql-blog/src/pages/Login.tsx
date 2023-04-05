@@ -3,14 +3,13 @@ import { useMutation } from '@apollo/client';
 import jwt_decode from "jwt-decode";
 import { LOGIN_USER, User,  } from "../Graphql";
 import { GlobalData, MyState } from "../core";
+import { FormLayout } from '../layouts';
 
 
 
 export const Login: React.FC = () => {
-
   const { LoginUser } = React.useContext<MyState>(GlobalData);
-  const [login,  {error} ] = useMutation(LOGIN_USER);
-
+  const [login, { error }] = useMutation(LOGIN_USER);
 
   const [formData, setFormData] = React.useState<User>({
     email: "",
@@ -34,7 +33,7 @@ export const Login: React.FC = () => {
           [field]:
             field === "email" ? String(fieldValue).toLowerCase() : fieldValue,
         });
-      };
+      }
     };
 
   React.useEffect(() => {
@@ -56,28 +55,30 @@ export const Login: React.FC = () => {
       .then((res) => {
         const decoded: any = jwt_decode(res.data.login);
 
-        sessionStorage.setItem("user", JSON.stringify(decoded.user));
-        LoginUser(res.data.login);
+            const token = res.data.login;
+            // 
+            sessionStorage.setItem("user", JSON.stringify(decoded.user));
+            LoginUser(token);
+            //
+            // sessionStorage.setItem("auth", token);
+            // Guarda el token en sessionStorage
+// sessionStorage.setItem("auth", "Bearer " + res.data.login);
 
-        console.log( decoded)
-        
+        console.log(decoded);
       })
       .catch((error) => console.log(error));
   };
 
-  if (error?.message?.includes("User not found")) {
-    return <h1 className="text-center mt-5 text-danger">* User not found *</h1>;
+  if (error) {
+    return <h1 className="text-center mt-5 text-danger">* {error.message} *</h1>;
   };
-   if (error?.message?.includes("Invalid credentials")) {
-     return (
-       <h1 className="text-center mt-5 text-danger">* Invalid credentials *</h1>
-     );
-   };
-  
+
+
+
   return (
-    <>
-      <h1>Login</h1>
-      <form onSubmit={handleSubmit}>
+    <FormLayout>
+      <form className="mt-3" onSubmit={handleSubmit}>
+        <h1>Login</h1>
         <label htmlFor="email">Email: </label> <br />
         <input
           type="email"
@@ -102,13 +103,19 @@ export const Login: React.FC = () => {
           type="checkbox"
           onChange={handleChange("terms")}
           id="terms"
+          className="m-2"
           required
         />{" "}
         <br />
-        <button id="miBoton" disabled={isFormDataValid} type="submit">
+        <button
+          id="miBoton"
+          className="btn btn-sm btn-success"
+          disabled={isFormDataValid}
+          type="submit"
+        >
           Submit
         </button>
       </form>
-    </>
+    </FormLayout>
   );
 }

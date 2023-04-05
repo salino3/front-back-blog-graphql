@@ -17,7 +17,7 @@ export const InputListPosts: React.FC<Props> = (props) => {
 
   const handleClick = (): void => {
     if (post.id && textComment) {
-      const token = sessionStorage.getItem("token");
+      const token = sessionStorage.getItem("auth");
       addComment({
         variables: { postId: post.id, comment: textComment },
         context: {
