@@ -1,7 +1,7 @@
 import React from "react";
 import { useQuery } from "@apollo/client";
-import { ALL_POSTS, User, Post } from "../Graphql";
-import { PostsList } from "../components";
+import { ALL_POSTS, Post } from "../Graphql";
+import { FormPosting, PostsList } from "../components";
 import { Link } from "react-router-dom";
 import { HomeLayout } from "../layouts";
 import { login, register } from "../router";
@@ -51,7 +51,7 @@ export const Home: React.FC = () => {
         <Link className=" mx-3 text-success" to={login}>
           Go to Login
         </Link>
-      </div> || <br />}
+      </div> || <FormPosting />}
       <PostsList data={data} imgDefault={imgDefault} handleShow={handleShow } show={show} />
     </HomeLayout>
   );

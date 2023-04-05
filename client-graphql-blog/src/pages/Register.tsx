@@ -90,7 +90,7 @@ export const Register: React.FC = () => {
 
   return (
     <FormLayout>
-      <form onSubmit={handleSubmit}>
+      <form className="mb-5" onSubmit={handleSubmit}>
         <h1>Register</h1>
         <label htmlFor="username">Username: </label> <br />
         <input
@@ -149,7 +149,7 @@ export const Register: React.FC = () => {
         />{" "}
         <br />
         <button
-          className="btn btn-sm btn-primary rounded"
+          className="btn btn-sm btn-primary mb-5 rounded"
           id="miBoton"
           disabled={isFormDataValid}
           type="submit"

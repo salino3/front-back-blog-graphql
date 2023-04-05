@@ -27,7 +27,7 @@ export const InputListPosts: React.FC<Props> = (props) => {
         },
       })
         .then((result) => {
-          console.log("oh result", result);
+          console.log(result);
         })
         .catch((error) => {
           console.log(error);
