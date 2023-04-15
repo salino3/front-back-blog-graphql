@@ -1,7 +1,7 @@
 import React from 'react';
 import { GlobalData } from './GlobalData';
-import jwt_decode from "jwt-decode";
 import { User } from '../Graphql';
+import jwt_decode from "jwt-decode";
 
 interface Props {
     children: JSX.Element | JSX.Element[]
@@ -37,11 +37,20 @@ export const MyProvider: React.FC<Props> = ({children}) => {
       setCurrentUser(user ? JSON.parse(user) : null);
     }, [user]);
 
-    console.log(currentUser);
+const imgDefault: string =
+  "https://tse4.mm.bing.net/th?id=OIP.F24Hpc1CvAdlBi0W7qJMSAAAAA&pid=Api&P=0";
 
 
   return (
-    <GlobalData.Provider value={{ isAuthenticated, LoginUser, LogoutUser, currentUser }}>
+    <GlobalData.Provider
+      value={{
+        isAuthenticated,
+        LoginUser,
+        LogoutUser,
+        currentUser,
+        imgDefault,
+      }}
+    >
       {children}
     </GlobalData.Provider>
   );

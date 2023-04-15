@@ -41,6 +41,7 @@ export const Register: React.FC = () => {
             : fieldValue,
       });
     }
+    
   };
 
   React.useEffect(() => {

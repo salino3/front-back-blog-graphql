@@ -1,20 +1,18 @@
-@import '../index.scss';
+@import "../index.scss";
 
-.homeLayout{
-    display: grid;
-    margin: 0 auto;
-    width: 80%;
-
+.homeLayout {
+  display: grid;
+  margin: 0 auto;
+  width: 80%;
 }
 
-.divHeader{
-    display: grid;
-    margin: 0 auto; 
-    border: solid 1px $thirdColor;
-    padding: 1em;
-    grid-template-columns: 20% 40% 20%;
-    height: 8em;
-  
+.divHeader {
+  display: grid;
+  margin: 0 auto;
+  border: solid 1px $thirdColor;
+  padding: 1em;
+  grid-template-columns: 20% 40% 20%;
+  height: 8em;
 }
 
 .divForm {
@@ -25,6 +23,43 @@
   margin: 0 auto;
 }
 
+.divList > div {
+  display: grid;
+  margin: 0 auto;
+  grid-template-columns: repeat(3, minmax(20em, auto));
+  gap: 1em;
 
+  & > div {
+    padding: 0.2em;
+    margin: 0.5em;
+    border: solid $thirdColor;
+    border-radius: 10px;
+  }
 
+  & > div:nth-child(2n + 2) {
+    border: solid $firstColor;
+  }
+}
 
+@media (max-width: 40em) {
+  .divList > div {
+    all: initial;
+
+    display: grid;
+    margin: 0 auto;
+    grid-template-columns: repeat(1, minmax(20em, auto));
+    gap: 1em;
+
+    & > div {
+      padding: 0.2em;
+      margin: 0.5em;
+      border: solid $thirdColor;
+      border-radius: 10px;
+      color: white;
+    }
+
+    & > div:nth-child(2n + 2) {
+      border: solid $firstColor;
+    }
+  }
+}

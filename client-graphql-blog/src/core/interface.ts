@@ -6,4 +6,5 @@ export interface MyState {
   LoginUser: (auth: string) => void;
   LogoutUser: () => void;
   currentUser: User | null;
+  imgDefault: string;
 }

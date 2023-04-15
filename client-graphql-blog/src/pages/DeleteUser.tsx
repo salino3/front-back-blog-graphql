@@ -60,7 +60,7 @@ export const DeleteUser: React.FC = () => {
             className="inputPosting"
             type="email"
             name="email"
-            placeholder="Text a title for the post"
+            placeholder="Your Email"
             onChange={handleChange("email")}
           />{" "}
           <br />
@@ -69,7 +69,7 @@ export const DeleteUser: React.FC = () => {
             className="inputPosting"
             type="password"
             name="password"
-            placeholder="Text a something "
+            placeholder="Your Password"
             onChange={handleChange("password")}
           />
           <br />

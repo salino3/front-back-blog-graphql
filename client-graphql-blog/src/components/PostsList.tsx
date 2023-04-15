@@ -26,14 +26,13 @@ export const PostsList: React.FC<Props> = (props) => {
           .map((post: Post, index: number) => (
             <div
               key={index}
-              className="border   rounded m-1 border-warning p-1 divListHome"
-            >
-              <p className="border-bottom  border-danger py-1">
+              className="border  rounded m-1 border-warning p-1 divListHome">
+              <p className="border-bottom  border-danger py-1 pImg">
                 <span className="border rounded border-info px-1 ">Title</span>{" "}
                 {post?.title}{" "}
                 <small className="border px-1  rounded text-warning float-end smallPhoto">
                   author:{" "}
-                  <span className="text-white">{post?.author?.nickname}</span>
+                  <span className="text-white ">{post?.author?.nickname}</span>
                   <img
                     className="mx-1 imgProfile"
                     onError={(e: React.SyntheticEvent<HTMLImageElement>) => {

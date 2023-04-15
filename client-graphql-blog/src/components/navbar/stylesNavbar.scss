@@ -15,7 +15,12 @@
         display: grid;
         grid-template-columns: auto auto;
         gap: 0.5em;
-        margin-left: 0.5em;
+        padding-left: 0.5em;
+        margin-right: 1em;
+         width: auto;
+         max-width: 20em;
+        
+    
       }
       
       .head3{
@@ -30,3 +35,16 @@
       
     
   }
+
+
+@media (max-width: 40em) {
+
+  .head3 {
+    display: none;
+  }
+
+  nav {
+    margin-left: 4em;
+  }
+
+}

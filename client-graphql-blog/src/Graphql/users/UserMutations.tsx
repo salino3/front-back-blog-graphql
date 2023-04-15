@@ -14,7 +14,6 @@ export const CREATE_USER = gql`
       password: $password
       nickname: $nickname
       img: $img 
-
     )
   }
 `;
@@ -32,20 +31,27 @@ export const LOGIN_USER = gql`
 
  export const UPDATE_USER = gql`
    mutation updateUser(
-    $username: String!
-    $email: String!
-    $nickname: String!
-    $password: String!
-    $img: String!
-    ) {
+     $username: String
+     $email: String
+     $nickname: String
+     $password: String
+     $img: String
+   ) {
      updateUser(
-    username: $username
-    email: $email
-    nickname: $nickname
-    password: $password
-    img: $img
-      )
-   }`;
+       username: $username
+       email: $email
+       nickname: $nickname
+       password: $password
+       img: $img
+     ) {
+       _id
+       username
+       email
+       nickname
+       img
+     }
+   }
+ `;
 
 
 export const DELETE_USER = gql`

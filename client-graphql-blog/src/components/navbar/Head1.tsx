@@ -10,6 +10,7 @@ interface Props {
 export const Head1: React.FC<Props> = (props) => {
     const {currentUser, handleLogout} = props;
 
+
   return (
     <div className="head1">
       <div className="head1_home">

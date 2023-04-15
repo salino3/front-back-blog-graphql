@@ -27,12 +27,11 @@ const user = {
     id: {type: GID}
   },
   async resolve(_, {id}) {
+    const user = await User.findById(id);
 
-     const user = await User.findById(id);
-     
-     if(!user) throw new Error("User not found");
+    if (!user) throw new Error("User not found");
 
-     return user;
+    return user;
   }
 };
 

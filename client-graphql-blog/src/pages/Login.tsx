@@ -70,7 +70,7 @@ export const Login: React.FC = () => {
   };
 
   if (error) {
-    return <h1 className="text-center mt-5 text-danger">* {error.message} *</h1>;
+     <h1 className="text-center mt-5 text-danger">* {error.message} *</h1>;
   };
 
 
@@ -78,6 +78,7 @@ export const Login: React.FC = () => {
   return (
     <FormLayout>
       <form className="mt-3" onSubmit={handleSubmit}>
+    {error &&  <h1 className="text-center mt-2 text-danger">* {error.message} *</h1>}
         <h1>Login</h1>
         <label htmlFor="email">Email: </label> <br />
         <input

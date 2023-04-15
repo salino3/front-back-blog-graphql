@@ -1,3 +1,13 @@
+export interface UserApi {
+    id?: string | number;
+    username?: string;
+    email?: string;
+    password?: string;
+    nickname?: string;
+    img?: string;
+
+};
+
 export interface User {
     _id?: string | number;
     username?: string;

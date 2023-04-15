@@ -17,8 +17,14 @@
     }
 }
 
-.imgProfile{
-  min-height: 28px;
-  max-height: 32px;
-}
 
+    .smallPhoto {
+      position: relative;
+      bottom: 0.5em;
+      
+      .imgProfile{
+        min-height: 28px;
+        max-height: 32px;
+      }
+      
+    }

@@ -15,13 +15,13 @@ export const NavBar: React.FC<Props> = ({currentUser}) => {
         <li>
           <Link to={`${currentUser ? "privates" : ""}/list`}>List</Link>
         </li>
-        <li>
+        <li >
           <Link to={`${currentUser ? "/privates/updateuser" : "/register"}`}>
             {currentUser ? "Update Info" : "Register"}
           </Link>
         </li>
         {(currentUser && (
-          <li>
+          <li >
             <Link to={"/privates/deleteuser"}>Delete Account</Link>
           </li>
         )) ||

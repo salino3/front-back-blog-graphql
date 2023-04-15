@@ -70,9 +70,12 @@ const updateUser = {
   args: {
     username: { type: GS },
     email: { type: GS },
+    nickname: { type: GS },
     password: { type: GS },
     img: { type: GS },
+    // img: { type: GraphQLUpload },
   },
+  
   description: "Update the user info",
   async resolve(_, args, { verifiedUser }) {
     if (!verifiedUser) throw new Error("Unauthorized!");
@@ -88,11 +91,11 @@ const updateUser = {
     }
 
     const update = {
-      email: email || user.email,
-      password: password || user.password,
-      nickname: nickname || user.nickname,
-      username: username || user.username,
-      img: img || user.img,
+      email: email || user?.email,
+      password: password || user?.password,
+      nickname: nickname || user?.nickname,
+      username: username || user?.username,
+      img: img || user?.img,
     };
 
     const existingUser = await User.findOne({ email: email });
@@ -102,8 +105,8 @@ const updateUser = {
 
     const updatedUser = await User.findOneAndUpdate(
       { _id: verifiedUser._id },
-      update,
-      { new: true, runValidators: true }
+      update
+      // { new: true, runValidators: true }
     );
 
     return updatedUser;

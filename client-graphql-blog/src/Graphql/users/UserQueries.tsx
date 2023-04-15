@@ -64,6 +64,7 @@ export const GET_ONE_USER = gql`
       nickname
       email
       img
+      id
       comments {
         id
         comment

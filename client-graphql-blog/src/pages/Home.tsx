@@ -1,8 +1,7 @@
 import React from "react";
 import { useQuery } from "@apollo/client";
 import { ALL_POSTS, Post } from "../Graphql";
-import { FormPosting, PostsList } from "../components";
-import { Link } from "react-router-dom";
+import { FormPosting, LinksComponentsHome, PostsList } from "../components";
 import { HomeLayout } from "../layouts";
 import { login, register } from "../router";
 import { GlobalData, MyState } from "../core";
@@ -12,11 +11,8 @@ export const Home: React.FC = () => {
 
   const { data, error, refetch, loading } = useQuery<Post>(ALL_POSTS);
 
-    const {  currentUser } = React.useContext<MyState>(GlobalData);
+    const {  currentUser, imgDefault } = React.useContext<MyState>(GlobalData);
 
-
-  const imgDefault: string =
-    "https://tse4.mm.bing.net/th?id=OIP.F24Hpc1CvAdlBi0W7qJMSAAAAA&pid=Api&P=0";
 
   const [show, setShow] = React.useState<boolean[]>(
     new Array(data?.length).fill(false)
@@ -44,15 +40,11 @@ export const Home: React.FC = () => {
   return (
     <HomeLayout>
       <h3 className="text-center">Welcome to graphql page</h3>
-     {!currentUser && <div className="text-center my-5">
-        <Link className="mx-3 text-success" to={register}>
-          Go to Register
-        </Link>
-        <Link className=" mx-3 text-success" to={login}>
-          Go to Login
-        </Link>
-      </div> || <FormPosting />}
-      <PostsList data={data} imgDefault={imgDefault} handleShow={handleShow } show={show} />
+     {!currentUser && <LinksComponentsHome register={register} login={login} /> || <FormPosting />}
+      <PostsList data={data} 
+      imgDefault={imgDefault} 
+      handleShow={handleShow } 
+      show={show} />
     </HomeLayout>
   );
 };
